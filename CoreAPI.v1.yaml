@@ -1537,7 +1537,7 @@ paths:
         description: 'The required fields cannot be set to null, but they do not need to be updated via the API call.'
       tags:
         - Matters
-  '/api/v1/matters/{case_UUID}/sharepoints':
+  '/api/v1/matters/{case_UUID}/sharepoint':
     summary: A means for retrieving a JSON formatted list of documents related to a case or matter.
     description: This path will return a JSON formatted list of documents related to the case or matter specified by the path parameter 'id'.
     parameters:
