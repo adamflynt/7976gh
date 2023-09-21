@@ -16,7 +16,7 @@ tags:
   - name: Matters
     description: Interacting wtih Cases via API
   - name: Miscellaneous
-    description: Various system endpoints    
+    description: Various system endpoints
   - name: Organizations
     description: Interacting wtih Organizations via API
   - name: Pro Bono Matters
@@ -39,9 +39,9 @@ info:
     name: LegalServer Support
     url: 'https://help.legalserver.org'
     email: support@legalserver.org
-  license: 
+  license:
     name: Propriatary
-    url: https://apidocs.legalserver.org  
+    url: 'https://apidocs.legalserver.org'
 servers:
   - url: 'https://{site_name}.legalserver.org'
     variables:
@@ -1537,7 +1537,7 @@ paths:
         description: 'The required fields cannot be set to null, but they do not need to be updated via the API call.'
       tags:
         - Matters
-  '/api/v1/matters/{case_UUID}/sharepoint':
+  '/api/v1/matters/{case_UUID}/sharepoints':
     summary: A means for retrieving a JSON formatted list of documents related to a case or matter.
     description: This path will return a JSON formatted list of documents related to the case or matter specified by the path parameter 'id'.
     parameters:
@@ -1611,6 +1611,8 @@ paths:
         description: 'The body of this API call is optional. If it is not included, a SharePoint folder will be created in the location specified by the matter''s SharePoint Site and Library field. If that is null, then the site''s default location will be used. '
       tags:
         - Matters
+      x-stoplight:
+        id: qmm3kmx0w7isr
   '/api/v1/matters/{case_UUID}/additional_names':
     summary: A means for retrieving a JSON formatted list of documents related to a case or matter.
     description: This path will return a JSON formatted list of documents related to the case or matter specified by the path parameter 'id'.
@@ -2009,7 +2011,7 @@ paths:
             type: string
           in: query
           name: drivers_license
-          description: Drivers License Number 
+          description: Drivers License Number
         - schema:
             type: string
           in: query
@@ -6268,7 +6270,7 @@ paths:
             type: string
           in: query
           name: types
-          description: A multiselect of the different types of organization. 
+          description: A multiselect of the different types of organization.
         - schema:
             type: boolean
           in: query
@@ -6958,7 +6960,6 @@ paths:
         description: ''
       tags:
         - Events
-
     delete:
       summary: Delete Event Reminder
       operationId: delete-api-v1-event-event_uuid-reminders-reminder_uuid
@@ -7113,7 +7114,6 @@ paths:
             schema:
               $ref: '#/components/schemas/v1_core_event_reminder_recipient'
         description: 'This currently allows only for users to be added. That functionality will expand. '
-
   '/api/v1/event/{event_uuid}/reminders/{reminder_uuid}/recipients/{recipient_uuid}':
     parameters:
       - schema:
@@ -7264,7 +7264,6 @@ paths:
       tags:
         - Tasks
       x-internal: false
-
       x-stoplight:
         id: k6zgnj7khk1l4
     parameters: []
@@ -7520,7 +7519,6 @@ paths:
         Requires `API Update Task` permission. 
 
         Note that there is validation happening here. A Task is identified as `deadline: False`. A Task can have a `task_type`, but not a `deadline_type`. A Deadline is identified as `deadline: True`. A Deadline can have a `deadline_type`, but not a `task_type`. If you attempt to switch a Task to a Deadline, the no longer relevant `type` field will be nulled. 
-
       x-stoplight:
         id: yibef91yflpyt
       tags:
@@ -7732,7 +7730,6 @@ paths:
             schema:
               $ref: '#/components/schemas/v1_core_user_post_patch'
         description: ''
-
     parameters: []
     get:
       summary: Search Users
@@ -8115,7 +8112,6 @@ paths:
         Update an existing User record.
 
         Requires `API Update User` permission. 
-
   '/api/v1/users/{user_uuid}/subjects':
     parameters:
       - schema:
@@ -8262,7 +8258,6 @@ paths:
           * `opportunity_interst_id`: This is optional. It sets the types of links that pro bono users should see as a result of their level of interest/expertise in the subject. This is limited to three options -- `100887` for `Show "Interested"`, `100888` for `Show "Take This Case."`, and `100889` for `Show Both Links`. 
       tags:
         - Users
-
     delete:
       summary: Delete a User's Subjects
       operationId: delete-api-v1-users-user_id-subjects
@@ -8406,7 +8401,6 @@ paths:
       x-internal: false
       tags:
         - Users
-
   '/api/v1/users/{user_uuid}/organization_affiliation/{organization_affiliation_uuid}':
     parameters:
       - schema:
@@ -8513,7 +8507,6 @@ paths:
 
         Requires the `API Update User Affiliation` Permission.
       x-internal: false
-
   '/api/v1/users/{user_uuid}/note':
     parameters:
       - schema:
@@ -8644,7 +8637,6 @@ paths:
                   note_type: 104148
       tags:
         - Users
-
   '/api/v1/users/{user_uuid}/reset_password':
     parameters:
       - schema:
@@ -8757,7 +8749,6 @@ paths:
               example-1:
                 value:
                   password_reset: true
-
   /api/v1/users/scan_tokens:
     get:
       summary: Scan for Expiring Tokens
@@ -10681,7 +10672,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/additional_assistance_type/{additional_assistance_type_lookup_uuid}':
     parameters:
@@ -10739,7 +10729,6 @@ paths:
         Update an existing Additional Assistance Type Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Additional Assistance Type Lookup Value
       operationId: get-api-v1-lookups-additional_assistance_type-additional_assistance_type_lookup_uuid
@@ -10905,7 +10894,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/app_screening_status/{app_screening_status_lookup_uuid}':
     parameters:
@@ -10964,7 +10952,6 @@ paths:
         Update an existing Prescreen Screening Status Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Application Screening Status Lookup Value
       operationId: get-api-v1-lookups-app_screening_status-app_screening_status_lookup_uuid
@@ -11170,7 +11157,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/charge:
     get:
@@ -11396,7 +11382,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/charge/{charge_lookup_uuid}':
     parameters:
@@ -11454,7 +11439,6 @@ paths:
         Update an existing Charge Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Charge Lookup Value
       operationId: get-api-v1-lookups-charge-charge_lookup_uuid
@@ -11623,7 +11607,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/charge_outcome:
     get:
@@ -11760,7 +11743,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/charge_outcome/{charge_outcome_lookup_uuid}':
     parameters:
@@ -11818,7 +11800,6 @@ paths:
         Update an existing Charge Outcome Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Charge Outcome Lookup Value
       operationId: get-api-v1-lookups-charge_outcome-charge_outcome_lookup_uuid
@@ -11993,7 +11974,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/charge_penalty_class/{charge_penalty_class_lookup_uuid}':
     parameters:
@@ -12051,7 +12031,6 @@ paths:
         Update an existing Charge Penalty Class Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Charge Penalty Class Lookup Value
       operationId: get-api-v1-lookups-charge_penalty_class-charge_penalty_class_lookup_uuid
@@ -12226,7 +12205,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/charge_tag/{chargetag_lookup_uuid}':
     parameters:
@@ -12284,7 +12262,6 @@ paths:
         Update an existing Charge Tag Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Charge Tag Lookup Value
       operationId: get-api-v1-lookups-charge_tag-chargetag_lookup_uuid
@@ -12552,7 +12529,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/country:
     get:
@@ -12700,7 +12676,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/county:
     get:
@@ -12799,7 +12774,7 @@ paths:
             type: string
           in: query
           name: poverty_percent
-          description: the poverty percent 
+          description: the poverty percent
         - schema:
             type: string
           in: query
@@ -12855,7 +12830,6 @@ paths:
         Create County Lookup values.
 
         Requires `API Create Lookup` permission. 
-
   '/api/v1/lookups/county/{county_lookup_uuid}':
     parameters:
       - schema:
@@ -12912,7 +12886,6 @@ paths:
         Update an existing Charge Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific County Lookup Value
       operationId: get-api-v1-lookups-county-county_lookup_uuid
@@ -13081,7 +13054,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/education_level:
     get:
@@ -13212,7 +13184,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/employment_status:
     get:
@@ -13343,7 +13314,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/ethnicity:
     get:
@@ -13474,7 +13444,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/event_type:
     get:
@@ -13599,7 +13568,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/event_type/{event_type_lookup_uuid}':
     parameters:
@@ -13657,7 +13625,6 @@ paths:
         Update an existing Event Type Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Event Type Lookup Value
       operationId: get-api-v1-lookups-event_type-event_type_lookup_uuid
@@ -13826,7 +13793,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/how_referred:
     get:
@@ -13957,7 +13923,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/hearing_decision:
     get:
@@ -14088,7 +14053,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/hearing_decision/{hearing_decision_lookup_uuid}':
     parameters:
@@ -14146,7 +14110,6 @@ paths:
         Update an existing Hearing Decision Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Hearing Decision Lookup Value
       operationId: get-api-v1-lookups-hearing_decision-hearing_decision_lookup_uuid
@@ -14315,7 +14278,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/hearing_file_location/{hearing_file_location_lookup_uuid}':
     parameters:
@@ -14373,7 +14335,6 @@ paths:
         Update an existing Hearing File Location Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Hearing File Location Lookup Value
       operationId: get-api-v1-lookups-hearing_file_location-hearing_file_location_lookup_uuid
@@ -14542,7 +14503,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/hearing_filed_by/{hearing_filed_by_lookup_uuid}':
     parameters:
@@ -14600,7 +14560,6 @@ paths:
         Update an existing Hearing Filed By Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Hearing Filed By Lookup Value
       operationId: get-api-v1-lookups-hearing_filed_by-hearing_filed_by_lookup_uuid
@@ -14769,7 +14728,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/hearing_phase/{hearing_phase_lookup_uuid}':
     parameters:
@@ -14827,7 +14785,6 @@ paths:
         Update an existing Hearing Phase Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Hearing Phase Lookup Value
       operationId: get-api-v1-lookups-hearing_phase-hearing_phase_lookup_uuid
@@ -15006,7 +14963,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/income:
     get:
@@ -15131,7 +15087,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/income_change_type:
     get:
@@ -15262,7 +15217,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/income_change_type/{income_change_type_lookup_uuid}':
     parameters:
@@ -15320,7 +15274,6 @@ paths:
         Update an existing Income Change Type Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Income Change Type Lookup Value
       operationId: get-api-v1-lookups-income_change_type-income_change_type_lookup_uuid
@@ -15489,7 +15442,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/level_of_expertise:
     get:
@@ -15625,7 +15577,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/litigation_outcomes:
     get:
@@ -15756,7 +15707,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/litigation_outcomes/{litigation_outcomes_lookup_uuid}':
     parameters:
@@ -15814,7 +15764,6 @@ paths:
         Update an existing Outcome of Court Proceeding  Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Litigation Outcome Lookup Value
       operationId: get-api-v1-lookups-litigation_outcomes-litigation_outcomes_lookup_uuid
@@ -15988,7 +15937,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/litigation_relationship:
     get:
@@ -16124,7 +16072,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/living_arrangement:
     get:
@@ -16255,7 +16202,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/matter_close_reason:
     get:
@@ -16381,7 +16327,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/member_good_standing:
     get:
@@ -16512,7 +16457,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/military_service:
     get:
@@ -16643,7 +16587,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/note_type:
     get:
@@ -16774,7 +16717,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/organization_type:
     get:
@@ -16905,7 +16847,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/phase_decision:
     get:
@@ -17036,7 +16977,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/phase_decision/{service_decision_lookup_uuid}':
     parameters:
@@ -17094,7 +17034,6 @@ paths:
         Update an existing Service Decision Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Service Decision Lookup Value
       operationId: get-api-v1-lookups-phase_decision-service_decision_lookup_uuid
@@ -17263,7 +17202,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   '/api/v1/lookups/phase_type/{service_type_lookup_uuid}':
     parameters:
@@ -17321,7 +17259,6 @@ paths:
         Update an existing Service Type Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific Service Type Lookup Value
       operationId: get-api-v1-lookups-phase_type-service_type_lookup_uuid
@@ -17490,7 +17427,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/problem_code:
     get:
@@ -17589,7 +17525,7 @@ paths:
             type: boolean
           in: query
           name: lsc_eligible
-          description: filter for whether this LPC matches LSC eligibility          
+          description: filter for whether this LPC matches LSC eligibility
         - schema:
             type: string
           in: query
@@ -17609,7 +17545,7 @@ paths:
             type: integer
           in: query
           name: lsindex_id
-          description: filter for the LSIndex ID 
+          description: filter for the LSIndex ID
         - schema:
             type: integer
           in: query
@@ -17666,7 +17602,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/probono_appropriate_volunteer:
     get:
@@ -17797,7 +17732,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/probono_engagement_type:
     get:
@@ -17928,7 +17862,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/probono_skills_developed:
     get:
@@ -18059,7 +17992,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/race:
     get:
@@ -18190,7 +18122,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/recruitment:
     get:
@@ -18321,7 +18252,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/roles:
     get:
@@ -18546,7 +18476,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/screening_status:
     get:
@@ -18677,7 +18606,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/sharepoint_site_library:
     get:
@@ -18813,7 +18741,6 @@ paths:
         The UI will validate these values to ensure that the SharePoint Site and Library exists and the stored app has credentials to access it. This API call will not do that at this time. 
 
         Requires `API Create Lookup` permission. 
-
   '/api/v1/lookups/sharepoint_site_library/{sharepoint_lookup_uuid}':
     parameters:
       - schema:
@@ -18870,7 +18797,6 @@ paths:
         Update an existing SharePoint Site Library Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific SharePoint Site Library Lookup Value
       operationId: get-api-v1-lookups-sharepoint_site_library-sharepoint_lookup_uuid
@@ -19040,7 +18966,6 @@ paths:
         Requires `API Create Lookup` permission. 
       tags:
         - Lookups
-
     parameters: []
   /api/v1/lookups/ssi_section8_housing_type:
     get:
@@ -19174,7 +19099,6 @@ paths:
         Create SSI Section 8 Housing Type Lookup values.
 
         Requires `API Create Lookup` permission. 
-
   '/api/v1/lookups/ssi_section8_housing_type/{ssi_section8_housing_type_lookup_uuid}':
     parameters:
       - schema:
@@ -19231,7 +19155,6 @@ paths:
         Update an existing SSI Section 8 Housing Type Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific SSI Section 8 Housing Type Lookup Value
       operationId: get-api-v1-lookups-ssi_section8_housing_type-ssi_section8_housing_type_lookup_uuid
@@ -19400,7 +19323,6 @@ paths:
         Create SSI Welfare Status Lookup values.
 
         Requires `API Create Lookup` permission. 
-
   '/api/v1/lookups/ssi_welfare_status/{ssi_welfare_status_lookup_uuid}':
     parameters:
       - schema:
@@ -19458,7 +19380,6 @@ paths:
         Update an existing SSI Welfare Status Lookup Record.
 
         Requires `API Update Lookup` permission. 
-
     get:
       summary: Get Specific SSI Welfare Status Lookup Value
       operationId: get-api-v1-lookups-ssi_welfare_status-ssi_welfare_status_lookup_uuid
@@ -27298,13 +27219,10 @@ components:
         module_id:
           x-stoplight:
             id: db47vm9ii9ttp
-          description: >-
-            This is also nullable if the task/deadline is not linked to a module.
-            Otherwise this is the `id` value of the record it is being linked to with
-            the `module` field.
+          description: This is also nullable if the task/deadline is not linked to a module. Otherwise this is the `id` value of the record it is being linked to with the `module` field.
           type: integer
           nullable: true
-          writeOnly: true          
+          writeOnly: true
         title:
           type: string
           minLength: 1
